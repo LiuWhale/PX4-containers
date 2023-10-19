@@ -65,8 +65,8 @@ px4-dev-ros2-eloquent: px4-dev-ros-melodic
 px4-dev-ros2-foxy: px4-dev-ros-noetic
 	docker build -t px4io/px4-dev-ros2-foxy . -f Dockerfile_ros2-foxy
 
-px4-dev-ros2-humble: px4-dev-base-jammy
-	docker build -t px4io/px4-dev-ros2-humble -f Dockerfile_ros2 --build-arg="ROS_DISTRO=humble" --build-arg="BASE=px4io/px4-dev-base-jammy" .
+px4-dev-ros2-humble: px4-dev-simulation-jammy
+	docker build -t liuwhale/px4-dev-ros2-humble -f Dockerfile_ros2 --build-arg="ROS_DISTRO=humble" --build-arg="BASE=liuwhale/px4-dev-simulation-jammy" .
 
 px4-dev-ros2-iron: px4-dev-base-jammy
 	docker build -t px4io/px4-dev-ros2-iron -f Dockerfile_ros2 --build-arg="ROS_DISTRO=iron" --build-arg="BASE=px4io/px4-dev-base-jammy" .
@@ -83,5 +83,8 @@ px4-dev-simulation-bionic: px4-dev-base-bionic
 px4-dev-simulation-focal: px4-dev-base-focal
 	docker build -t px4io/px4-dev-simulation-focal . -f Dockerfile_simulation-focal
 
+px4-dev-simulation-jammy: px4-dev-base-jammy
+	docker build -t liuwhale/px4-dev-simulation-jammy . -f Dockerfile_simulation-jammy
+	
 px4-docs:
 	docker build -t px4io/px4-dev-docs . -f Dockerfile_docs
