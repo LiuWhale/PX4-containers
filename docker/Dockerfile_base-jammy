@@ -2,7 +2,8 @@
 # PX4 base development environment
 #
 
-FROM ubuntu:22.04
+ARG BASE=ubuntu:22.04
+FROM ${BASE}
 LABEL maintainer="Ramon Roche <rroche@linuxfoundation.com>"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -88,8 +89,9 @@ RUN python3 -m pip install argparse argcomplete coverage cerberus empy jinja2 kc
   #pyserial pyulog>=0.5.0 pyyaml requests setuptools>=39.2.0 six>=1.12.0 toml>=0.9 sympy>=1.10.1
 
 # manual ccache setup
-RUN ln -s /usr/bin/ccache /usr/lib/ccache/cc \
-	&& ln -s /usr/bin/ccache /usr/lib/ccache/c++
+# if BASE is ubuntu:22.04 please uncomment below
+# RUN ln -s /usr/bin/ccache /usr/lib/ccache/cc \
+# 	&& ln -s /usr/bin/ccache /usr/lib/ccache/c++ \
 
 # astyle v3.1
 RUN wget -q https://downloads.sourceforge.net/project/astyle/astyle/astyle%203.1/astyle_3.1_linux.tar.gz -O /tmp/astyle.tar.gz \

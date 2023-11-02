@@ -30,7 +30,7 @@ px4-dev-base-focal:
 	docker build -t px4io/px4-dev-base-focal . -f Dockerfile_base-focal
 
 px4-dev-base-jammy:
-	docker build -t px4io/px4-dev-base-jammy . -f Dockerfile_base-jammy
+	docker build -t px4io/px4-dev-base-jammy -f Dockerfile_base-jammy --build-arg="BASE=nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04" .
 
 px4-dev-clang: px4-dev-base-bionic
 	docker build -t px4io/px4-dev-clang . -f Dockerfile_clang
